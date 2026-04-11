@@ -1,0 +1,65 @@
+---
+title: Midterm Project Report
+author: Christina Becraft, Emalee Martin, Roland Berg, Sakshi Chauhan, Tyler Bryant, and You!
+output: html_document
+params:
+  arm: Modified F75 (intervention)
+---
+
+```{r, here-i-am, include = FALSE}
+
+here::i_am(
+  "report.Rmd"
+)
+
+```
+
+Feel free to load any packages you use in this section!!
+
+```{r, load-packages, include = FALSE}
+
+library(dplyr)
+
+```
+Cleaning data based on parameters (run this before loading cleandata.rds in your own code!!)
+
+```{r, load-and-filter-data, include = FALSE}
+
+# Loads initial dataset from the data/ folder
+datapath <- here::here("data/f75_interim.csv")
+data <- read.csv(datapath, header = TRUE)
+
+# Filters data by arm status based on parameters (set by render R scripts)
+cleandata <- data %>%
+    filter(arm == params$arm)
+
+# Saves filtered dataset as an .rds object for calling in individual .R scripts
+saveRDS(
+  cleandata,
+  file = here::here("data/cleandata.rds")
+)
+```
+
+Section 1: Christina
+
+```{r, elements1}
+
+```
+
+Section 2: Emalee
+
+```{r, elements2}
+
+```
+
+Section 3: Sakshi
+
+```{r, elements3}
+
+```
+
+Section 4: Tyler
+
+```{r, elements4}
+
+```
