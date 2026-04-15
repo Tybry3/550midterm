@@ -1,0 +1,5 @@
+default:
+  arm: Standard F75
+
+intervention:
+  arm: Modified F75 (intervention)

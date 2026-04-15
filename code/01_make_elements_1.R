@@ -1,5 +1,13 @@
 ## Midterm Report Element #1 (Christina)
 
+library(readr) #to read in csv
+library(labelled) #to create nice labels
+library(DataExplorer) #to plot missing data
+library(glue) #to use parameters in caption
+library(rmarkdown)
+library(ggplot2)
+library(gtsummary)
+
 cleandata <- readRDS(
   file = here::here("data/cleandata.rds")
 )

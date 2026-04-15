@@ -1,5 +1,9 @@
 ## Midterm Report Element #2 (Emalee)
 
+library(ggplot2)
+library(gtsummary)
+library(dplyr)
+
 cleandata <- readRDS(
   file = here::here("data/cleandata.rds")
 )

@@ -2,8 +2,6 @@
 title: Midterm Project Report
 author: Christina Becraft, Emalee Martin, Roland Berg, Sakshi Chauhan, Tyler Bryant, and You!
 output: html_document
-params:
-  arm: Modified F75 (intervention)
 ---
 
 ```{r, here-i-am, include = FALSE}
@@ -12,6 +10,8 @@ here::i_am(
   "report.Rmd"
 )
 
+config_list <- config::get()
+
 ```
 
 Feel free to load any packages you use in this section!!
@@ -19,32 +19,11 @@ Feel free to load any packages you use in this section!!
 ```{r, load-packages, include = FALSE}
 
 library(dplyr)
-library(ggplot2)
-library(gtsummary)
-library(readr) #to read in csv
-library(labelled) #to create nice labels
-library(DataExplorer) #to plot missing data
-library(glue) #to use parameters in caption
-library(rmarkdown)
 
-```
-Cleaning data based on parameters (run this before loading cleandata.rds in your own code!!)
-
-```{r, load-and-filter-data, include = FALSE}
-
-# Loads initial dataset from the data/ folder
-datapath <- here::here("data/f75_interim.csv")
-data <- read.csv(datapath, header = TRUE)
-
-# Filters data by arm status based on parameters (set by render R scripts)
-cleandata <- data %>%
-    filter(arm == params$arm)
-
-# Saves filtered dataset as an .rds object for calling in individual .R scripts
-saveRDS(
-  cleandata,
+cleandata <- readRDS(
   file = here::here("data/cleandata.rds")
 )
+
 ```
 
 Section 1: Christina
@@ -52,6 +31,7 @@ Section 1: Christina
 Missing data is displayed in the plot below, and patient characteristics are summarized in Table 1. Note that the variable tracking sickle cell disease is not included in the table because it was present in none of the patients, with no missing data. Furthermore, measurements labelled as taken at discharge were taken at death or withdrawal from the study if the patient was not discharged. 
 
 ```{r missing-data, echo=FALSE, fig.height=8, fig.width=8}
+
 missing_data_plot <- readRDS(
   file = here::here("output/missing_data_plot.rds")
 )

@@ -17,16 +17,13 @@ If you run into any issues with this structure or would like things done a diffe
 
 # IMPORTANT: Instructions for loading data
 
-In order to generate two different versions of our report based on parameters, I have set up two different `make` commands that each call 
-on a different `render.R` script, with different parameters set (standard vs. intervention) depending on what command is executed. Additionally,
-the first step of the `report.Rmd` file filters our initial dataset depending on what parameter is set and saves a clean version of the dataset
-(cleandata.rds) in the `data/` folder.
+In order to generate two different versions of our report based on parameters, I have set up the `00_clean_data.R` file to filter 
+our dataset based on a config variable specified in terminal:
+- To run the standard/default version of the report, simply execute `make` in the terminal
+- To run the intervention/customized version of the report, first execute `export WHICH_CONFIG="intervention"` in terminal, followed by executing `make`
 
-- It's my understanding that if each person begins their code chunk by loading 'cleandata.rds' from the `data/` folder (I've already added 
-this code to the top of each coder's script), we will all be working from the correctly filtered dataset
-
-- However, as we are putting together the code for the report, you may have to run the commands to filter and save 'cleandata.rds' 
-on your own before executing your code
+- However, as we are putting together the code for the report, you may have to run `00_clean_data.R` to filter and save 
+'cleandata.rds' on your own before executing your code
 
 My apologies for the hassle y'all, this is what I was going to clarify in class/office hours this week!!
 
@@ -37,9 +34,9 @@ My apologies for the hassle y'all, this is what I was going to clarify in class/
 Besides this README.md file, this repository also contains...
 
 - the `code/` folder contains:
+      - 00_clean_data.R, which cleans our intial dataset based on the config specifications defined in terminal
       - an individual R script for each section of code for the report (labeled 1-4 corresponding to our project outline assignment)
-      - render_report_standard.R, which renders the standard version of the report
-      - render_report_intervention.R, which renders the intervention version of the report
+      - render_report.R, which renders the report
 - the `data/` folder contains our initial dataset, as well as a cleaned version (cleandata.rds) based on what version of the report we are running
 - the Makefile contains commands to generate our report (standard and intervention version) from terminal
 - the `output/` folder will house whatever .rds objects we'd like to pull into our final version of the report
